@@ -1,0 +1,174 @@
+{
+  "dataset": "data/raw/content_refresh_anonymized.csv",
+  "dataset_rows": 30000,
+  "dataset_columns": 44,
+  "positive_label": "trend_direction == 'down'",
+  "positive_rate": 0.5420666666666667,
+  "train_rows": 27675,
+  "test_rows": 2325,
+  "client_holdout": true,
+  "random_state": 42,
+  "feature_count": 28,
+  "safe_feature_groups": {
+    "prior_30d": [
+      "impressions_prev_30d",
+      "clicks_prev_30d",
+      "sessions_prev_30d",
+      "prior_ctr",
+      "prior_session_rate"
+    ],
+    "static": [
+      "search_volume",
+      "competition",
+      "cpc",
+      "word_count",
+      "char_count",
+      "competition_level",
+      "content_type",
+      "main_intent",
+      "word_count_tier"
+    ],
+    "timing": [
+      "content_age_at_start"
+    ]
+  },
+  "excluded_from_model": [
+    "trend_direction",
+    "trend_pct",
+    "impressions_last_30d",
+    "clicks_last_30d",
+    "sessions_last_30d",
+    "impressions_90d",
+    "clicks_90d",
+    "sessions_90d",
+    "ctr",
+    "avg_position",
+    "engagement_rate",
+    "scroll_rate",
+    "ai_sessions_90d",
+    "ai_traffic_pct",
+    "days_since_last_update",
+    "content_id",
+    "client_id"
+  ],
+  "models": {
+    "logistic_regression": {
+      "accuracy": 0.7273118279569892,
+      "precision": 0.6850605652759085,
+      "recall": 0.55995599559956,
+      "f1": 0.6162227602905569,
+      "roc_auc": 0.8159292977320332,
+      "average_precision": 0.6953878081458619,
+      "precision_at_20": 0.85,
+      "precision_at_50": 0.84,
+      "precision_at_100": 0.79
+    },
+    "decision_tree": {
+      "accuracy": 0.7604301075268817,
+      "precision": 0.6343511450381679,
+      "recall": 0.9141914191419142,
+      "f1": 0.7489860297431276,
+      "roc_auc": 0.8479276599976381,
+      "average_precision": 0.6982636386422977,
+      "precision_at_20": 0.75,
+      "precision_at_50": 0.68,
+      "precision_at_100": 0.71
+    },
+    "random_forest": {
+      "accuracy": 0.7875268817204301,
+      "precision": 0.6915974145891043,
+      "recall": 0.823982398239824,
+      "f1": 0.7520080321285141,
+      "roc_auc": 0.8701186502831074,
+      "average_precision": 0.7390453702579636,
+      "precision_at_20": 0.8,
+      "precision_at_50": 0.76,
+      "precision_at_100": 0.74
+    },
+    "baseline_rules": {
+      "roc_auc": 0.7875731075932453,
+      "average_precision": 0.598480814471421,
+      "precision_at_20": 0.2,
+      "precision_at_50": 0.32,
+      "precision_at_100": 0.43
+    }
+  },
+  "best_model": "random_forest",
+  "selection_metric": "precision_at_50",
+  "lift_precision_at_50": 2.375,
+  "top_features": [
+    {
+      "feature": "log_impressions_prev_30d",
+      "importance": 0.39009273727332977
+    },
+    {
+      "feature": "prior_session_rate",
+      "importance": 0.1412629567261175
+    },
+    {
+      "feature": "content_age_at_start",
+      "importance": 0.1163957407376165
+    },
+    {
+      "feature": "log_sessions_prev_30d",
+      "importance": 0.059315583122518716
+    },
+    {
+      "feature": "word_count",
+      "importance": 0.0475483113671099
+    },
+    {
+      "feature": "char_count",
+      "importance": 0.047097667481825256
+    },
+    {
+      "feature": "log_clicks_prev_30d",
+      "importance": 0.03519433879834348
+    },
+    {
+      "feature": "prior_ctr",
+      "importance": 0.03414263905815676
+    },
+    {
+      "feature": "word_count_tier_unknown",
+      "importance": 0.015722446628187017
+    },
+    {
+      "feature": "log_search_volume",
+      "importance": 0.01520521727247445
+    },
+    {
+      "feature": "content_type_feedly article",
+      "importance": 0.015153942320794273
+    },
+    {
+      "feature": "competition_level_unknown",
+      "importance": 0.01137045849463374
+    },
+    {
+      "feature": "competition",
+      "importance": 0.010992253385006666
+    },
+    {
+      "feature": "word_count_tier_1000-2000",
+      "importance": 0.009215220905935333
+    },
+    {
+      "feature": "cpc",
+      "importance": 0.007780752987604702
+    }
+  ],
+  "queue_counts": {
+    "monitor": 25945,
+    "refresh": 3571,
+    "review_competitive_position": 465,
+    "expand_and_refresh": 19
+  },
+  "confidence_counts": {
+    "medium": 16196,
+    "low": 11668,
+    "high": 2136
+  },
+  "top50_observed_decline_rate": 0.98,
+  "data_scope_note": "Results use the bundled 30,000-row anonymized starter dataset available in this repo. The gated full warehouse release was not used in this run."
+}
